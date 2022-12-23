@@ -1,0 +1,28 @@
+<h1>List of all articles</h1>
+<style>
+         table, th, td {
+            border: 1px solid black;
+            width: 30%;
+         }
+      </style>
+<% flash.each do |name, msg| %>
+    <p><%= msg %></p>
+<% end %>
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @articles.each do |article| %>
+        <tr>
+            <td><%= article.title %></td>
+            <td><%= article.description %></td>
+            <td>Some action</td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>
