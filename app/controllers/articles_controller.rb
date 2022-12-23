@@ -1,3 +1,5 @@
+require 'byebug'
+
 class ArticlesController < ApplicationController
     
     def index
@@ -12,10 +14,13 @@ class ArticlesController < ApplicationController
         @article = Article.new
     end
 
+    def edit
+        @article = Article.find(params[:id])
+    end
+
     def create
         puts "creating article"
         
-        # @article = Article.new(title: params[:title], description: params[:description])
         @article = Article.new(params.require(:article).permit(:title, :description))
         if @article.save
             flash[:notice] = "Article saved successfully"
@@ -24,11 +29,21 @@ class ArticlesController < ApplicationController
             render 'new'
         end
         # render plain: params[:article]
-        # BELOW CODE NOT WORKING
-        # @article = Article.new(params.require(@article).permit(:title, :description))
 
         # TO GET ONLY ONE ARTICLE (IT WILL AUTOMATICALLY GET ID)
         # redirect_to @article 
         
+    end
+
+    def update
+        puts "Update article"
+        @article = Article.find(params[:id])
+        if @article.update(params.require(:article).permit(:title, :description))
+            flash[:notice] = "Article updated successfully"
+            redirect_to '/articles'
+        else
+            render 'edit'
+        end
+
     end
 end
