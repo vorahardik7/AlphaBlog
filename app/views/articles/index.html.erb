@@ -26,9 +26,9 @@
         <tr>
             <td><%= article.title %></td>
             <td><%= article.description %></td>
-            <td> <%= button_to 'DELETE', article_path(article), method: :delete, data: {turbo_confirm: 'Are you sure?'} %></td> 
-            <td> <%= button_to 'EDIT', edit_article_path(article), method: :get %></td> 
             <td> <%= button_to 'SHOW', article_path(article), method: :get %></td> 
+            <td> <%= button_to 'EDIT', edit_article_path(article), method: :get %></td> 
+            <td> <%= button_to 'DELETE', article_path(article), method: :delete, data: {turbo_confirm: 'Are you sure?'} %></td> 
         </tr>
         <% end %>
     </tbody>

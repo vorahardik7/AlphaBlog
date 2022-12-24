@@ -1,27 +1,5 @@
 <h1>Edit article</h1>
 
-<% if @article.errors.any? %>
-    <h3>Errors:</h3>
-    <ul>
-        <% @article.errors.full_messages.each do |error| %>
-        <li><%= error %></li>
-        <% end %>
-    </ul>
-<% end %>
-
-
-<%= form_with(model: @article, data: { turbo: false }) do |f| %>
-
-    <p>
-    <%= f.label :title, "Title" %><br/>
-    <%= f.text_field :title %> 
-    </p>
-    <p>
-    <%= f.label :description, "Description" %><br/>
-    <%= f.text_area :description %> 
-    </p>
-    <%= f.submit %>
-
-<% end %>
+<%= render 'form' %>
 
 <p><%= button_to 'CANCEL', articles_path, method: :get %></p>
