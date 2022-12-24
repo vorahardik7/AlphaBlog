@@ -1,4 +1,16 @@
 <h1>Show all articles</h1>
-
+<style>
+div {
+  display: flex;
+}
+div>p {
+    margin: 3px;
+}
+</style>
 <p><strong>Title</strong> <%= @article.title%></p>
-<p><strong>Description</strong> <%= @article.description%></p>
+<p><strong>Description</strong> <%= @article.description%></p> 
+<div>
+<p><%= button_to 'EDIT', edit_article_path(@article), method: :get %></p> |
+<p><%= button_to 'DELETE', article_path(@article), method: :delete, data: {turbo_confirm: 'Are you sure?'} %></p> |
+<p><%= button_to 'HOME', articles_path, method: :get %></p> 
+</div>
