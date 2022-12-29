@@ -1,16 +1,19 @@
-<h1>Show all articles</h1>
+
 <style>
-div {
-  display: flex;
-}
-div>p {
-    margin: 3px;
+.container {
+    padding: 30px;
+    width: 50%;
+    height: 370px;
 }
 </style>
-<p><strong>Title</strong> <%= @article.title%></p>
-<p><strong>Description</strong> <%= @article.description%></p> 
-<div>
-<p><%= button_to 'EDIT', edit_article_path(@article), method: :get %></p> |
-<p><%= button_to 'DELETE', article_path(@article), method: :delete, data: {turbo_confirm: 'Are you sure?'} %></p> |
-<p><%= button_to 'HOME', articles_path, method: :get %></p> 
+
+<div class="container">
+  <h1 class = "text-center m-4"><%= @article.title%></h1>
+  <%# <strong>Title</strong> <%= @article.title%> 
+  <h3>Description</h3> 
+  <p><%= simple_format(@article.description)%></p>
+  <div>
+    <%= link_to "Edit", edit_article_path(@article), class: "btn btn-warning m-2" %>
+    <%= link_to "Delete", article_path(@article), class: "btn btn-danger m-2", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %> 
+  </div>
 </div>

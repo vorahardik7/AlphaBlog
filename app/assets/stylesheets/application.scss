@@ -13,3 +13,40 @@
  *= require_tree .
  *= require_self
  */
+@import "bootstrap";
+
+body {
+    background-color: lightgrey !important;
+}
+
+nav {
+    background-color: #3b3b3b !important;
+}
+
+.nav-link {
+    color: white !important;
+}
+
+#logo {
+    color: white !important;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+.footer {
+    color: white;
+    background-color: #3b3b3b;
+    position: fixed;
+    display: flex;
+    width: 100%;
+    height: 60px;
+    // left: 0;
+    bottom: 0;
+    align-items: center;
+    justify-content: center;
+}
+
+.clear {
+    clear: both;
+    height: 100px;
+}

@@ -1,37 +1,53 @@
-<h1>List of all articles</h1>
-<style>
-         th, td {
-            border: 1px solid black;
-            height: 30px;
-         }
-         table {
-             border: 1px solid black;
-             width: 40%;
-             text-align: center;
-         }
-      </style>
-<% flash.each do |name, msg| %>
-    <p><%= msg %></p>
-<% end %>
-<table>
-    <thead>
-        <tr>
-            <th>Title</th>
-            <th>Description</th>
-            <th colspan="3">Action</th>
-        </tr>
-    </thead>
-    <tbody>
-        <% @articles.each do |article| %>
-        <tr>
-            <td><%= article.title %></td>
-            <td><%= article.description %></td>
-            <td> <%= button_to 'SHOW', article_path(article), method: :get %></td> 
-            <td> <%= button_to 'EDIT', edit_article_path(article), method: :get %></td> 
-            <td> <%= button_to 'DELETE', article_path(article), method: :delete, data: {turbo_confirm: 'Are you sure?'} %></td> 
-        </tr>
-        <% end %>
-    </tbody>
-</table>
+<%# RENDER NAVIGATION BAR %>
 
-<p><%= button_to 'CREATE ARTICLE', new_article_path, method: :get %></p>
+<h1 class = "text-center m-4">List of all articles</h1>
+
+
+<style>
+    .container {
+        width: 50%;
+        text-align: center;
+    }
+
+    .text-success {
+        text-decoration: none;
+    }
+    
+</style>
+
+<div class = "container">
+    
+</div>
+
+<div class = "container">
+    <% if flash.any? %>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <% flash.each do |name, msg| %>
+            <p><%= msg %></p>
+        <% end %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <% end %>
+        <%= link_to 'Create Article', new_article_path, class: "btn btn-primary btn-lg create", method: :get %>
+            <% @articles.each do |article| %>
+            <div class="card text-center m-4 shadow mb-5 bg-body rounded">
+                <div class="card-header">
+                    Featured
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title"><%= link_to article.title, article_path(article), class: "text-success" %></h5>
+                    <p class="card-text"><%= truncate(article.description, length: 100) %></p>
+                    <%= link_to "View", article_path(article), class: "btn btn-info m-2" %>
+                    <%= link_to "Edit", edit_article_path(article), class: "btn btn-warning m-2" %>
+                    <%= link_to "Delete", article_path(article), class: "btn btn-danger m-2", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+                </div>
+                <div class="card-footer text-muted">
+                    <small>Created <%= time_ago_in_words(article.created_at) %> ago, 
+                edited <%= time_ago_in_words(article.updated_at) %> ago</small>
+                </div>
+            </div> 
+        <% end %>
+    </div>
+</div>
+
+
