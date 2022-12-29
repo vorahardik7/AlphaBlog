@@ -33,20 +33,17 @@ nav {
     font-weight: bold;
 }
 
-.footer {
+footer {
     color: white;
     background-color: #3b3b3b;
     position: fixed;
-    display: flex;
+    left: 0;
+    bottom: 0;
     width: 100%;
     height: 60px;
-    // left: 0;
-    bottom: 0;
-    align-items: center;
-    justify-content: center;
 }
 
-.clear {
-    clear: both;
-    height: 100px;
+.center {
+    text-align: center;
+    vertical-align: middle;
 }

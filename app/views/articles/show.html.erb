@@ -10,10 +10,11 @@
 <div class="container">
   <h1 class = "text-center m-4"><%= @article.title%></h1>
   <%# <strong>Title</strong> <%= @article.title%> 
-  <h3>Description</h3> 
-  <p><%= simple_format(@article.description)%></p>
-  <div>
     <%= link_to "Edit", edit_article_path(@article), class: "btn btn-warning m-2" %>
     <%= link_to "Delete", article_path(@article), class: "btn btn-danger m-2", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %> 
+    <%= link_to "Articles List", articles_path, class: "btn btn-primary m-2"%>
+  <h3>Description:</h3> 
+  <p><%= simple_format(@article.description)%></p>
+  <div>
   </div>
 </div>
