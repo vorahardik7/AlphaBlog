@@ -12,6 +12,10 @@
     .text-success {
         text-decoration: none;
     }
+
+    .alert {
+        height: 55px;
+    }
     
 </style>
 
@@ -32,7 +36,7 @@
             <% @articles.each do |article| %>
             <div class="card text-center m-4 shadow mb-5 bg-body rounded">
                 <div class="card-header">
-                    Featured
+                    by <%= article.user.username %>
                 </div>
                 <div class="card-body">
                     <h5 class="card-title"><%= link_to article.title, article_path(article), class: "text-success" %></h5>

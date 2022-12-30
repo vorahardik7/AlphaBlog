@@ -6,6 +6,8 @@ class ArticlesController < ApplicationController
 
     def index
         @articles = Article.all
+        @users = User.all
+        
     end
     
     def show
@@ -22,6 +24,7 @@ class ArticlesController < ApplicationController
         puts "creating article"
         
         @article = Article.new(article_params)
+        @article.user = User.first
         if @article.save
             flash[:notice] = "Article saved successfully"
             redirect_to '/articles'
