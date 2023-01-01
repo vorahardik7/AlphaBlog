@@ -38,7 +38,7 @@ class ArticlesController < ApplicationController
     end
 
     def update
-        puts "Update article"
+        # puts "Update article"
         if @article.update(article_params)
             flash[:notice] = "Article updated successfully"
             redirect_to '/articles'

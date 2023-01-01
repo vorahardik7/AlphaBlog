@@ -44,7 +44,7 @@
                     <%= f.password_field :password, class: "form-control", id: "password" %>
                 </div>
             </div>
-            <%= f.submit class: "btn btn-success m-2" %>
+            <%= f.submit(@user.new_record? ? "Sign-Up" : "Update Account", class: "btn btn-success m-2")%>
             <%= link_to 'Return to article list', articles_path, class: "btn btn-secondary m-2" %>
         <% end %>
     </div>

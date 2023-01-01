@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :articles # AUTOMATICALLY GENERATES ALL ABOVE ROUTES
 
   get "signup", to: "users#new"
-  post "users", to: "users#create"
+  # post "users", to: "users#create"
+  resources :users, except: [:new]
 
 end
