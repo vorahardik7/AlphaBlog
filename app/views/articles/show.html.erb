@@ -1,20 +1,36 @@
-
 <style>
 .container {
     padding: 30px;
-    width: 50%;
-    height: 370px;
+    width: 70%;
+}
+p {
+    text-align: justify;
+    padding: 0px 10px;
+}
+.name {
+  text-decoration: none;
 }
 </style>
 
 <div class="container">
-  <h1 class = "text-center m-4"><%= @article.title%></h1>
-  <%# <strong>Title</strong> <%= @article.title%> 
-    <%= link_to "Edit", edit_article_path(@article), class: "btn btn-warning m-2" %>
-    <%= link_to "Delete", article_path(@article), class: "btn btn-danger m-2", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %> 
-    <%= link_to "Articles List", articles_path, class: "btn btn-primary m-2"%>
-  <h3>Description:</h3> 
-  <p><%= simple_format(@article.description)%></p>
-  <div>
-  </div>
+    <div class="card text-center m-4 shadow mb-5 bg-body rounded">
+        <div class="card-header">
+            <h3 class = "text-center m-4"><%= @article.title%></h3>
+            <%= link_to gravatar_file(@article.user), user_path(@article.user)%>
+            <br/>
+            <h4 class="name">by <%= link_to @article.user.username, user_path(@article.user), class: "text-decoration-none" %></h4>
+        </div>
+        <div class="card-body">
+            <p class="text-justify"><%= simple_format(@article.description) %></p>
+        </div>
+        <div class="card-footer text-muted">
+            <%= link_to "Edit", edit_article_path(@article), class: "btn btn-warning m-2" %>
+            <%= link_to "Delete", article_path(@article), class: "btn btn-danger m-2", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %> 
+            <%= link_to "Articles List", articles_path, class: "btn btn-primary m-2"%>
+            <br/>
+            <small>Created <%= time_ago_in_words(@article.created_at) %> ago, 
+        edited <%= time_ago_in_words(@article.updated_at) %> ago</small>
+        </div>
+    </div>   
+
 </div>
