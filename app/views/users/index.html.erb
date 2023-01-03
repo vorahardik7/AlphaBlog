@@ -17,9 +17,11 @@
     
 </style>
 
+
+
 <div class = "container">
     <%= render 'common/flash' %>
-
+    <%= render 'common/pagination', obj: @users%>
     <div class = "row">
         <% @users.each do |user| %>
             <div class = "col-4">
@@ -41,5 +43,5 @@
             </div>
         <% end %> 
     </div>
-
+    <%= render 'common/pagination', obj: @users%>
 </div>
