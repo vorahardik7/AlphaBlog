@@ -1,0 +1,44 @@
+<style>
+.container {
+    width: 50%;
+    height: 370px;
+}
+
+.form-container {
+    background-color: #3b3b3b !important;
+    padding: 30px;
+}
+
+.form-label {
+    color: #fff !important;
+}
+
+.errors {
+    background-color: red !important;
+}
+
+</style>
+
+<%= render 'common/flash' %>
+<h1 class = "text-center m-4">Sign-in</h1>
+
+<div class="container">  
+    <div class = "form-container">
+        <%= form_with(scope: :session, url: login_path) do |f| %>
+            <div class="form-group row m-3">
+                <%= f.label :email, "Email:", class: "form-label col-2" %><br/>
+                <div class="col-10">
+                    <%= f.email_field :email, class: "form-control", id: "email", placeholder: "Enter your email address" %>
+                </div>
+            </div>
+            <div class="form-group row m-3">
+                <%= f.label :password, "Password:", class: "form-label col-2" %><br/>
+                <div class="col-10">
+                    <%= f.password_field :password, class: "form-control", id: "password", placeholder: "Enter your password" %>
+                </div>
+            </div>
+            <%= f.submit "Log-in", class: "btn btn-success m-2"%>
+            <%= link_to 'Return to article list', articles_path, class: "btn btn-secondary m-2" %>
+        <% end %>
+    </div>
+</div>

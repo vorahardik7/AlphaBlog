@@ -29,9 +29,16 @@
           <a class="nav-link disabled">Disabled</a>
         </li> %>
       </ul>
-      <form class="d-flex" role="search">
+      <%# <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
+      </form> %>
+      <form class="d-flex">
+        <% if session[:user_id] == nil %>
+            <%= link_to "Log-in", login_path, class: "btn btn-success" %>
+        <% else %>
+            <%= link_to "Log out", logout_path, class: "btn btn-danger m-2", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+        <% end %>
       </form>
     </div>
   </div>
