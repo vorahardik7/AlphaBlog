@@ -44,7 +44,7 @@ class ArticlesController < ApplicationController
         # puts "Update article"
         if @article.update(article_params)
             flash[:notice] = "Article updated successfully"
-            redirect_to '/articles'
+            redirect_to @article
         else
             render 'edit'
         end
