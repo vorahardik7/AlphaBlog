@@ -1,17 +1,22 @@
 <style>
 .container {
     padding: 30px;
-    width: 70%;
+    width: 80%;
 }
 p {
     text-align: justify;
-    padding: 0px 10px;
+    padding: 0px 40px;
 }
 .name {
   text-decoration: none;
 }
+.card-header, .card-footer {
+    background-color: #3b3b3b;
+    color: white;
+}
 </style>
 
+<%= render 'common/flash' %>
 <div class="container">
     
     <div class="card text-center m-4 shadow mb-5 bg-body rounded">
@@ -25,11 +30,13 @@ p {
             <p class="text-justify"><%= simple_format(@article.description) %></p>
         </div>
         <div class="card-footer text-muted">
-            <%= link_to "Edit", edit_article_path(@article), class: "btn btn-warning m-2" %>
-            <%= link_to "Delete", article_path(@article), class: "btn btn-danger m-2", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %> 
+            <% if logged_in? && @article.user == current_user %>
+                <%= link_to "Edit", edit_article_path(@article), class: "btn btn-warning m-2" %>
+                <%= link_to "Delete", article_path(@article), class: "btn btn-danger m-2", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %> 
+            <% end %>
             <%= link_to "Articles List", articles_path, class: "btn btn-primary m-2"%>
             <br/>
-            <small>Created <%= time_ago_in_words(@article.created_at) %> ago, 
+            <small style = "color: white;">Created <%= time_ago_in_words(@article.created_at) %> ago, 
         edited <%= time_ago_in_words(@article.updated_at) %> ago</small>
         </div>
     </div>   
