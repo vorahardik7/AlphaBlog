@@ -1,5 +1,3 @@
-<div class = "row justify-content-md-center">
-                    <div class = "col"></div>
-                    <div class = "col"><%= button_to 'Edit', edit_article_path(article), method: :get %></div>
-                    <div class = "col"><%= button_to 'Delete', article_path(article), method: :delete, data: {turbo_confirm: 'Are you sure?'} %></div>
-                </div>
+================================= ALPHA BLOG =================================
+
+This application works as a platform for Bloggers where users can sign-up to write articles and make it available for readers.

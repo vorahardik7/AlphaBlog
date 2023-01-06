@@ -21,16 +21,27 @@ body {
 
 nav {
     background-color: #3b3b3b !important;
+    height: 70px;
+}
+
+.navbar-brand {
+    font-size: 20px;
 }
 
 .nav-link {
     color: white !important;
 }
 
+.nav-link:hover {
+    background-color: white;
+    color: black !important;
+}
+
 #logo {
     color: white !important;
     letter-spacing: 2px;
     font-weight: bold;
+    font-size: 30px;
 }
 
 footer {

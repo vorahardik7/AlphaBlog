@@ -2,11 +2,7 @@
 <%= render 'common/flash' %>
 
 <h1 class = "text-center m-4">List of all articles</h1>
-<% if logged_in? %>
-    <div class = "text-center">
-        <%= link_to 'Create Article', new_article_path, class: "btn btn-dark btn-lg create", method: :get %>
-    </div>
-<% end %>
+
 <br/>
 <%= render 'common/pagination', obj: @articles%>
 <br/>
