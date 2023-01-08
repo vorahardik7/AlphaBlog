@@ -7,12 +7,17 @@ p {
     text-align: justify;
     padding: 0px 40px;
 }
-.name {
-  text-decoration: none;
-}
+
 .card-header, .card-footer {
     background-color: #3b3b3b;
     color: white;
+}
+
+.badge {
+    width: 10%;
+    height: 25px;
+    margin: auto;
+    line-height: 18px;
 }
 </style>
 
@@ -25,6 +30,13 @@ p {
             <%= link_to gravatar_file(@article.user), user_path(@article.user)%>
             <br/>
             <h4 class="name">by <%= link_to @article.user.username, user_path(@article.user), class: "text-decoration-none" %></h4>
+
+            <% if @article.categories.any? %>
+                <% @article.categories.each do |category| %>
+                    <%= link_to category.name, category_path(category), class: "badge text-bg-info mx-1 my-2" %>
+                <% end %>
+            <% end %>
+
         </div>
         <div class="card-body">
             <p class="text-justify"><%= simple_format(@article.description) %></p>

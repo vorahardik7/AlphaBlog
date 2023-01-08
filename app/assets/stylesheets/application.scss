@@ -19,6 +19,14 @@ body {
     background-color: lightgrey !important;
 }
 
+a {
+    text-decoration: none !important;
+}
+
+.badge:hover {
+    filter: brightness(85%) !important;
+}
+
 #logo {
     color: white !important;
     letter-spacing: 2px;

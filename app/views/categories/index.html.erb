@@ -17,9 +17,10 @@
 <%= render 'common/flash' %>
 
 <h1 class="text-center mt-4">Categories</h1>
-
+<br/>
 <div class="container">
     <%= render 'common/pagination', obj: @categories %>
+    <br/>
     <div class = "row">
         <% @categories.each do |category| %>
             <div class = "col-3 mx-3">
@@ -27,6 +28,7 @@
                     <div class="card text-center shadow bg-white rounded">
                         <div class="card-body">
                             <h3 class="card-title"><%= link_to category.name, category_path(category), class: "text-success text-uppercase" %></h3>
+                            <%= category.articles.count %> articles
                         </div>
                         <div class="card-footer text-muted">
                             Updated <%= time_ago_in_words(category.updated_at) %> ago</small>
@@ -36,5 +38,6 @@
             </div>
         <% end %>
     </div>
+    <br/>
     <%= render 'common/pagination', obj: @categories %>
 </div>

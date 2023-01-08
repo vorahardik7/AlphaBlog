@@ -1,2 +1,17 @@
 <%= render 'common/flash' %>
 <h1 class = "text-center m-4">Category: <%= @category.name %></h1>
+
+<div class="text-center m-4">
+    <% if logged_in? && current_user.admin? %>
+        <%= link_to "Edit category", edit_category_path(@category), class: "btn btn-warning" %>
+        <br/>
+    <% end %>
+</div>
+
+<h3 class = "text-center m-4">Articles</h3>
+
+<%= render 'common/pagination', obj: @articles%>
+<%= render 'articles/article' %>
+<%= render 'common/pagination', obj: @articles%>
+<br/>
+<br/>
