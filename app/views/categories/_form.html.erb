@@ -1,0 +1,32 @@
+<style>
+    .container {
+        width: 60%;
+        height: 370px;
+    }
+
+    .form-container {
+        background-color: #3b3b3b !important;
+        padding: 30px;
+    }
+
+    .form-label {
+        color: #fff !important;
+    }
+</style>
+
+<div class="container">  
+    <%= render 'common/errors', obj: @category %>
+    <div class = "form-container">
+        <%= form_with model: @category, data: { turbo: false } do |f| %>
+            <div class="form-group row m-3">
+                <%= f.label :name, "Name:", class: "form-label col-2" %><br/>
+                <div class= "col-10">
+                    <%= f.text_field :name, class: "form-control", placeholder: "Enter a name" %>
+                </div>
+            </div>
+            
+            <%= f.submit class: "btn btn-success m-2" %>
+            <%= link_to 'Return to article list', articles_path, class: "btn btn-secondary m-2" %>
+        <% end %>
+    </div>
+</div>
