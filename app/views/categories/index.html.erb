@@ -1,15 +1,26 @@
 <style>
     .container {
-        width: 80%;
+        width: 120%;
         text-align: center;
     }
 
-    .text-success {
-        text-decoration: none;
+    .row {
+        width: 100%;
     }
 
     .card {
-        margin: 10px;
+        transition: transform .3s;
+    }
+    .card:hover {
+        transform: scale(1.1);
+    }
+
+    .card-body {
+        background-color: #3b3b3b !important;
+    }
+
+    .text-uppercase {
+        color: yellow !important;
     }
     
 </style>
@@ -19,25 +30,24 @@
 <h1 class="text-center mt-4">Categories</h1>
 <br/>
 <div class="container">
-    <%= render 'common/pagination', obj: @categories %>
+    <%# <%= render 'common/pagination', obj: @categories %> 
     <br/>
     <div class = "row">
         <% @categories.each do |category| %>
-            <div class = "col-3 mx-3">
-                <div class="row justify-content-md-center">
-                    <div class="card text-center shadow bg-white rounded">
-                        <div class="card-body">
-                            <h3 class="card-title"><%= link_to category.name, category_path(category), class: "text-success text-uppercase" %></h3>
-                            <%= category.articles.count %> articles
-                        </div>
-                        <div class="card-footer text-muted">
-                            Updated <%= time_ago_in_words(category.updated_at) %> ago</small>
-                        </div>
+            <div class="col-3">
+                <div class="card text-center shadow bg-white rounded mb-5">
+                    <div class="card-body">
+                        <h3><%= link_to category.name, category_path(category), class: "text-uppercase" %></h3>
+                        <p style="color: white;"><%= category.articles.count %> articles</p>
+                    </div>
+                    <div class="card-footer text-muted">
+                        <small>Updated <%= time_ago_in_words(category.updated_at) %> ago</small>
                     </div>
                 </div>
+               
             </div>
         <% end %>
     </div>
     <br/>
-    <%= render 'common/pagination', obj: @categories %>
+    <%# <%= render 'common/pagination', obj: @categories %>
 </div>
