@@ -23,3 +23,5 @@ global.$ = global.jQuery = jQuery;
 window.$ = window.jQuery = jQuery;
 
 
+
+

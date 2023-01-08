@@ -1,7 +1,7 @@
 <style>
 .container {
     
-    width: 50%;
+    width: 70%;
     height: 370px;
 }
 
@@ -23,6 +23,19 @@
     height: 180px;
 }
 
+
+
+input[type="checkbox"] {
+    margin-right: 10px;
+    width: 13px;
+    height: 13px;
+}
+
+.check-boxes > label {
+    margin-right: 25px !important;
+    color: white !important;
+    font-size: 17px;
+}
 </style>
 
 
@@ -37,14 +50,25 @@
                     <%= f.text_field :title, class: "form-control" %>
                 </div>
             </div>
+
             <div class="form-group row m-3">
                 <%= f.label :description, "Description:", class: "form-label col-2" %><br/>
                 <div class="col-10">
                     <%= f.text_area :description, class: "form-control", id: "description" %>
                 </div>
             </div>
-            <%= f.submit class: "btn btn-success m-2" %>
-            <%= link_to 'Return to article list', articles_path, class: "btn btn-secondary m-2" %>
+
+            <div class="form-group row m-3">
+                <%= f.label :category, "Category:", class: "form-label col-2" %><br/>
+                <div class="col-10">
+                    <div class="check-boxes">
+                        <%= f.collection_check_boxes :category_ids, Category.order(:name), :id, :name, { multiple: true } %>
+                    </div>
+                </div>
+            </div>
+
+            <%= f.submit class: "btn btn-success m-2 btn-lg" %>
+            <%= link_to 'Return to article list', articles_path, class: "btn btn-secondary m-2 btn-lg" %>
         <% end %>
     </div>
 </div>
