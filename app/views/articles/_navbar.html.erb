@@ -71,10 +71,10 @@
       <form class="d-flex">
         <% if logged_in? %>
             <h5 style = "color: white; text-transform: uppercase; margin: auto; letter-spacing: 3px"> <%= "[Admin]" if current_user.admin? %> Hi, <%= current_user.username %>!</h5>
-            <%= link_to "Log out", logout_path, class: "btn btn-danger mx-4", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+            <%= link_to "Log out", logout_path, class: "btn btn-danger mx-4 btn-lg", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
         <% else %>
-            <%= link_to "Log-in", login_path, class: "btn btn-success" %>
-            <%= link_to "Sign-up", signup_path, class: "btn btn-primary mx-4" %>
+            <%= link_to "Log-in", login_path, class: "btn btn-success btn-lg" %>
+            <%= link_to "Sign-up", signup_path, class: "btn btn-primary mx-4 btn-lg" %>
         <% end %>
 
       </form>
